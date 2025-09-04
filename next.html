@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calisthenics Skills</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            color: aliceblue;
+            background-image: url('handstand.jpeg'); /* Ensure this image path is correct */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            backdrop-filter: blur(5px);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            max-width: 90%;
+            width: 400px;
+            box-sizing: border-box;
+            max-height: 90vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .container::-webkit-scrollbar {
+            display: none;
+        }
+
+        h1, h2, h3 {
+            margin: 10px 0;
+            font-family: 'Playfair Display', serif;
+            font-weight: 700;
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        h3 {
+            font-size: 1.1em;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .skill-section h2 {
+            font-size: 1.8em;
+            margin-bottom: 5px;
+            text-align: center;
+        }
+        .skill-section h3.tasks-heading {
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .skill-section {
+            display: block;
+            width: 100%;
+            padding: 25px 0;
+            min-height: 200px;
+            background-color: rgba(255, 255, 255, 0.08);
+            margin-top: 20px;
+            border-radius: 12px;
+            padding-left: 20px;
+            padding-right: 20px;
+            box-sizing: border-box;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill-section .btn5 {
+            width: 180px;
+            height: 50px;
+            font-size: 1.1em;
+            background-color: rgba(60, 179, 113, 0.8);
+            margin: 30px auto 0 auto;
+            display: block;
+            font-weight: 600;
+        }
+        .skill-section .btn5:hover {
+            background-color: rgba(60, 179, 113, 1);
+            transform: translateY(-3px);
+        }
+        .skill-section .btn5:active {
+            transform: translateY(0);
+            background-color: rgba(46, 139, 87, 1);
+        }
+
+        .btn1, .btn2 {
+            height: 48px;
+            background-color: rgba(173, 171, 171, 0.4);
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+            font-size: 1.1em;
+            margin: 15px 0;
+            box-sizing: border-box;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn1 {
+            width: 100%;
+            max-width: 320px;
+        }
+
+        .btn2 {
+            width: 110px;
+        }
+
+        .btn1:hover, .btn2:hover {
+            background-color: rgba(200, 200, 200, 0.6);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn1:active, .btn2:active {
+            transform: translateY(0);
+            background-color: rgba(150, 150, 150, 0.7);
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nxt_container {
+            display: none;
+            width: 100%;
+            text-align: center;
+        }
+
+        .sub_container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        .skill-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 10px;
+        }
+
+        .skill-item h3 {
+            flex-grow: 1;
+            text-align: left;
+            margin-right: 20px;
+            margin-left: 0;
+            font-size: 1.15em;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+        }
+
+        .skill-item:last-of-type {
+            border-bottom: none;
+        }
+
+        .skill-tasks {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .skill-task-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 15px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .skill-task-item:last-child {
+            border-bottom: none;
+        }
+
+        .skill-task-item h3, .skill-task-item h4 {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        .skill-task-item h3 {
+            flex-grow: 1;
+            text-align: left;
+            font-size: 1em;
+            font-weight: 400;
+        }
+
+        .skill-task-item h4 {
+            flex-shrink: 0;
+            text-align: right;
+            font-size: 0.9em;
+            color: rgba(255, 255, 255, 0.6);
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                width: 95%;
+                padding: 20px;
+                max-height: 85vh;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            h2 {
+                font-size: 1.3em;
+            }
+
+            h3 {
+                font-size: 1em;
+            }
+
+            .skill-section h2 {
+                font-size: 1.6em;
+            }
+            .skill-section h3.tasks-heading {
+                font-size: 1.1em;
+            }
+
+            .btn1 {
+                font-size: 1em;
+                height: 45px;
+            }
+
+            .btn2 {
+                width: 100px;
+                font-size: 0.9em;
+                height: 40px;
+            }
+
+            .skill-item h3 {
+                font-size: 1.05em;
+                margin-right: 15px;
+            }
+
+            .skill-task-item h3 {
+                font-size: 0.95em;
+            }
+
+            .skill-task-item h4 {
+                font-size: 0.85em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+                border-radius: 10px;
+                max-height: 80vh;
+            }
+
+            h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.1em;
+            }
+
+            h3 {
+                font-size: 0.95em;
+            }
+
+            .skill-section h2 {
+                font-size: 1.4em;
+            }
+            .skill-section h3.tasks-heading {
+                font-size: 1em;
+            }
+
+            .btn1 {
+                height: 40px;
+                font-size: 0.9em;
+                max-width: 250px;
+            }
+
+            .btn2 {
+                width: 85px;
+                height: 35px;
+                font-size: 0.8em;
+            }
+
+            .skill-item {
+                flex-direction: column;
+                align-items: flex-start;
+                margin-bottom: 15px;
+                padding: 8px 0;
+            }
+
+            .skill-item h3 {
+                margin-bottom: 8px;
+                margin-right: 0;
+                width: 100%;
+                text-align: center;
+                font-size: 1em;
+            }
+
+            .skill-item .btn2 {
+                margin-left: 0;
+                width: 100%;
+                max-width: 120px;
+                align-self: center;
+            }
+
+            .skill-tasks {
+                align-items: center;
+            }
+            .skill-task-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                padding: 8px 5px;
+            }
+            .skill-task-item h3, .skill-task-item h4 {
+                text-align: center;
+                width: 100%;
+            }
+            .skill-task-item h4 {
+                margin-top: 5px;
+            }
+        }
+    </style>
+
+    <script>
+        function startbtn() {
+            let subcontainer = document.querySelector('.sub_container');
+            let nextcontain = document.querySelector('.nxt_container');
+
+            subcontainer.style.display = 'none';
+            nextcontain.style.display = 'block';
+
+            document.querySelectorAll('.skill-section').forEach(section => {
+                section.style.display = 'none';
+            });
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const startButtons = document.querySelectorAll('.nxt_container .btn2');
+            const nxtContainer = document.querySelector('.nxt_container');
+            let back = document.querySelectorAll('.back');
+
+            startButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const skillNameElement = button.previousElementSibling;
+                    const skillName = skillNameElement.firstChild.textContent.trim();
+                    nxtContainer.style.display = 'none';
+
+                    document.querySelectorAll('.skill-section').forEach(section => {
+                        section.style.display = 'none';
+                    });
+
+                    const targetSectionId = skillName.replace(/\s/g, '').replace(/-/g, '') + 'Section';
+                    const targetSection = document.getElementById(targetSectionId);
+
+                    if (targetSection) {
+                        targetSection.style.display = 'block';
+                    } else {
+                        console.warn(`No section found for skill: ${skillName} (ID: ${targetSectionId})`);
+                    }
+
+                    back.forEach(backbtn => {
+                    backbtn.addEventListener('click',()=>{
+                            targetSection.style.display = 'none';
+                            nxtContainer.style.display = 'block';
+
+                            
+                    })
+                    })
+                });
+            });
+
+            // Timer logic for .btn5 buttons
+            const completeButtons = document.querySelectorAll('.btn5');
+            completeButtons.forEach(btn => {
+                btn.addEventListener("click", () => {
+                    const timedisplay = document.getElementById('timedisplay');
+                    const message = document.getElementById('massage');
+                    const completeDiv = document.querySelector('.Completeh1');
+
+                    // Show the timer and message container
+                    completeDiv.style.display = 'block';
+                    timedisplay.style.display = 'block';
+                    message.style.display = 'none'; // Ensure message is hidden initially
+
+                    let countdown;
+                    let timeLeft = 15;
+                    btn.style.display = 'none';
+                    timedisplay.textContent = timeLeft;
+
+                    countdown = setInterval(() => {
+                        timeLeft--;
+                        timedisplay.textContent = timeLeft;
+
+                        if (timeLeft <= 0) {
+                            clearInterval(countdown);
+                            timedisplay.textContent = '0';
+                            message.style.display = 'block';
+                            btn.style.display='block'
+                            timedisplay.style.display = 'none';
+ 
+                        }
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <!-- first page -->
+    <div class="container">
+        <div class="sub_container">
+            <h1 class="heading">Welcome..!</h1>
+            <h2 class="sub-heading">Learn impressive calisthenics skills!</h2>
+            <button class="btn1" onclick="startbtn()">Get started</button>
+        </div>
+
+        <!-- second page -->
+        <div class="nxt_container">
+            <h2 id="txt">Beginner skills!</h2>
+            <div class="skill-item"><h3>Pull-over</h3> <button class="btn2">start</button></div>
+            <div class="skill-item"><h3>L-sit hold</h3> <button class="btn2">start</button></div>
+            <div class="skill-item"><h3>Elbow lever</h3> <button class="btn2">start</button></div>
+            <div class="skill-item"><h3>90 degree hold</h3> <button class="btn2">start</button></div>
+
+            <h2 style="margin-top: 30px;">Advance skills!</h2>
+            <div class="skill-item"><h3>Muscle-up</h3><button class="btn2">start</button></div>
+            <div class="skill-item"><h3>Handstand</h3><button class="btn2">start</button></div>
+            <div class="skill-item"><h3>V-sit</h3><button class="btn2">start</button></div>
+            <div class="skill-item"><h3>Planche</h3><button class="btn2">start</button></div>
+
+            <a href="categories.html"><button class="btn1">Categories</button></a>
+        </div>
+
+        <!-- third page -->
+
+        <!-- l-sit hold box -->
+        <div id="LsitholdSection" class="skill-section" style="display: none;">
+            <h2>L-sit hold!</h2>
+            <h3 class="tasks-heading">Today's Tasks</h3>
+            <div class="skill-tasks">
+                <div class="skill-task-item">
+                    <h3>L-sit tuck hold</h3> <h4>15s x 5set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>One leg L-sit</h3> <h4>15s x 5set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Hanging leg raises</h3> <h4>10 x 3set</h4>
+                </div>
+            </div>
+            <button class="btn5" id="lsithold">strat Timer!</button><button class="back">Back</button>
+        </div>
+
+        <!-- pull over box -->
+        <div id="PulloverSection" class="skill-section" style="display: none;">
+            <h2>Pull-over!</h2>
+            <h3 class="tasks-heading">Today's Tasks</h3>
+            <div class="skill-tasks">
+                <div class="skill-task-item">
+                    <h3>Skin the cat</h3> <h4>3 sets of 5 reps</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>German hang</h3> <h4>30s x 3 sets</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Straight arm pullover negatives</h3> <h4>3 sets of 5 reps</h4>
+                </div>
+            </div>
+            <button class="btn5" id="pullover">strat Timer!</button><button class="back">Back</button>
+        </div>
+
+        <!-- elbow lever box -->
+        <div id="ElbowleverSection" class="skill-section" style="display: none;">
+            <h2>Elbow lever!</h2>
+            <h3 class="tasks-heading">Today's Tasks</h3>
+            <div class="skill-tasks">
+                <div class="skill-task-item">
+                    <h3>Tuck planche lean</h3> <h4>10s x 5set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Crow stand (Frog stand)</h3> <h4>20s x 4set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Straight arm plank</h3> <h4>30s x 3set</h4>
+                </div>
+            </div>
+            <button class="btn5" id="elbowlever">strat Timer!</button><button class="back">Back</button>
+        </div>
+
+        <!-- 90degree box -->
+        <div id="90degreeholdSection" class="skill-section" style="display: none;">
+            <h2>90 degree hold!</h2>
+            <h3 class="tasks-heading">Today's Tasks</h3>
+            <div class="skill-tasks">
+                <div class="skill-task-item">
+                    <h3>Push-up holds (bottom position)</h3> <h4>10s x 5set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Pseudo planche push-ups</h3> <h4>5 x 3set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Dips (bottom hold)</h3> <h4>10s x 4set</h4>
+                </div>
+            </div>
+            <button class="btn5" id="degree">strat Timer!</button><button class="back">Back</button>
+        </div>
+
+        <!-- muscle up box -->
+        <div id="MuscleupSection" class="skill-section" style="display: none;">
+            <h2>Muscle-up!</h2>
+            <h3 class="tasks-heading">Today's Tasks</h3>
+            <div class="skill-tasks">
+                <div class="skill-task-item">
+                    <h3>Explosive pull-ups</h3> <h4>5 x 5set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>False grip hangs</h3> <h4>30s x 3set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Straight bar dips</h3> <h4>8 x 4set</h4>
+                </div>
+            </div>
+            <button class="btn5" id="muscle">strat Timer!</button><button class="back">Back</button>
+        </div>
+
+        <div id="HandstandSection" class="skill-section" style="display: none;">
+            <h2>Handstand!</h2>
+            <h3 class="tasks-heading">Today's Tasks</h3>
+            <div class="skill-tasks">
+                <div class="skill-task-item">
+                    <h3>Wall handstand holds</h3> <h4>30s x 5set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Frog stand to handstand attempts</h3> <h4>5 x 3set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Wrist push-ups</h3> <h4>10 x 3set</h4>
+                </div>
+            </div>
+            <button class="btn5">strat Timer!</button><button class="back">Back</button>
+        </div>
+
+        <div id="VsitSection" class="skill-section" style="display: none;">
+            <h2>V-sit!</h2>
+            <h3 class="tasks-heading">Today's Tasks</h3>
+            <div class="skill-tasks">
+                <div class="skill-task-item">
+                    <h3>L-sit holds</h3> <h4>20s x 4set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Pike compressions</h3> <h4>10 x 3set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Leg raises (floor or hanging)</h3> <h4>12 x 3set</h4>
+                </div>
+            </div>
+            <button class="btn5">strat Timer!</button><button class="back">Back</button>
+        </div>
+
+        <div id="PlancheSection" class="skill-section" style="display: none;">
+            <h2>Planche!</h2>
+            <h3 class="tasks-heading">Today's Tasks</h3>
+            <div class="skill-tasks">
+                <div class="skill-task-item">
+                    <h3>Tuck planche holds</h3> <h4>10s x 5set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Planche leans</h3> <h4>15s x 4set</h4>
+                </div>
+                <div class="skill-task-item">
+                    <h3>Pseudo planche push-ups</h3> <h4>8 x 3set</h4>
+                </div>
+            </div>
+            <button class="btn5">strat Timer!</button><button class="back">Back</button>
+        </div>
+
+        <div class="Completeh1" style="display: none;">
+            <p id="timedisplay" style="display: none; font-size: 3em; font-weight: bold;"></p>
+            <h3 id="massage" style="display: none;">time's up!</h3>
+        </div>
+    </div>
+</body>
+</html>

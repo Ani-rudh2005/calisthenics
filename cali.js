@@ -1304,12 +1304,12 @@ function displaySkillPlan(skillName) {
     const planHtml = `
         <h2>30-Day ${skillObj.name} Challenge</h2>
         <div class="skill-tasks" data-skill-id="${skillId}">
-            ${skillObj.tasks.map(task => `
+            ${skillObj.tasks.map((task,i) => `
                 <div class="skill-task-item">
                     <label>
                         <input type="radio" data-day="${task.day}" data-skill-id="${skillId}" class="radio-input">
-                        <span class="day-number">Day ${task.day}:</span>
-                        <ul>
+                        <span class="day-number" onclick="workout('dayplane',${i})">Day ${task.day}:</span>
+                        <ul style = 'display:none;' class = "dayplane${i}">
                             ${task.dailyWorkout.map(exercise => `
                                 <li>
                                     <span class="task-text">${exercise.text}</span>
@@ -1383,6 +1383,12 @@ function backToSkills() {
 function backToStart() {
     nxtContainer.classList.add('hidden');
     subContainer.classList.remove('hidden');
+}
+
+function workout(e,i){
+    
+    document.querySelector(`.${e+i}`).style.display='block'
+    
 }
 
 // Expose functions to the global scope so they can be called by inline `onclick` attributes
